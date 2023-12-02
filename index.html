@@ -6,13 +6,14 @@ layout: base
 
 <main>
   <h1>Adventures of Flat Sok 🐈‍⬛</h1>
+
   {% for entry in diary %}
     <hr>
     <a class="entry"
       href="{{ entry.url }}"
       >
       <img class="detail"
-        src="/assets/images/scaled/{{ entry.title }}_200.webp"
+        src="/assets/images/scaled/{{ entry.image }}_200.webp"
         width="100px"
         >
       <h2 class="detail">
