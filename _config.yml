@@ -1,0 +1,4 @@
+collections:
+  diary:
+    output: true
+    permalink: /:path/

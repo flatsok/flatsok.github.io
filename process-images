@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+rm -r assets/images/scaled
+mkdir -p assets/images/scaled
+
+sizes=(200 800)
+
+for file in assets/images/original/*.jpeg; do
+  filename=$(basename -- "$file")
+  filename_noext="${filename%.*}"
+
+  for size in "${sizes[@]}"; do
+    scaled_jpeg="assets/images/scaled/${filename_noext}_${size}.jpeg"
+    scaled_webp="assets/images/scaled/${filename_noext}_${size}.webp"
+
+    sips -Z $size "$file" --out "$scaled_jpeg"
+    cwebp -q 80 "$scaled_jpeg" -o "$scaled_webp"
+  done
+done

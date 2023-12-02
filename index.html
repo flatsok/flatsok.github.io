@@ -1,0 +1,40 @@
+---
+layout: base
+---
+
+{% assign diary = site.diary | sort: 'title' | reverse %}
+
+<main>
+  <h1>Adventures of Flat Sok 🐈‍⬛</h1>
+  {% for entry in diary %}
+    <hr>
+    <a class="entry"
+      href="{{ entry.url }}"
+      >
+      <img class="detail"
+        src="/assets/images/scaled/{{ entry.title }}_200.webp"
+        width="100px"
+        >
+      <h2 class="detail">
+        {{ entry.title }}
+      </h2>
+    </a>
+  {% endfor %}
+  <hr>
+</main>
+
+<style>
+  main {
+    text-align: center;
+  }
+
+  .entry {
+    display: block;
+    margin: 10px 0;
+  }
+
+  .detail {
+    display: inline-block;
+    vertical-align: middle;
+  }
+</style>
