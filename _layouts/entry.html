@@ -6,13 +6,6 @@ layout: base
   <div>
     <h1>{{ page.title }}</h1>
 
-    <a class="iconLink" href="{{ page.photos }}" target="_blank" rel="noopener noreferrer">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/1/12/Google_Photos_icon_%282020%29.svg"></img>
-    </a>
-    <a class="iconLink" href="{{ page.map }}" target="_blank" rel="noopener noreferrer">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg"></img>
-    </a>
-
     <div id="map">
       <iframe
         id="mapFrame"
@@ -25,14 +18,17 @@ layout: base
         ></iframe>
       </div>
 
+    <a class="iconLink" href="{{ page.photos }}" target="_blank" rel="noopener noreferrer">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/1/12/Google_Photos_icon_%282020%29.svg"></img>
+    </a>
+    <a class="iconLink" href="{{ page.map }}" target="_blank" rel="noopener noreferrer">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg"></img>
+    </a>
+
   </div>
 </main>
 
 <style>
-  h1 {
-    margin-bottom: 0;
-  }
-
   main {
     text-align: center;
   }
