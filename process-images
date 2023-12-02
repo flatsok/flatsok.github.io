@@ -1,19 +1,40 @@
 #!/usr/bin/env bash
 
-rm -r assets/images/scaled
-mkdir -p assets/images/scaled
 
-sizes=(200 800)
+main() {
+  rm -r assets/images/scaled
+  mkdir -p assets/images/scaled
 
-for file in assets/images/original/*.jpeg; do
-  filename=$(basename -- "$file")
-  filename_noext="${filename%.*}"
+  sizes=(200 800)
 
-  for size in "${sizes[@]}"; do
-    scaled_jpeg="assets/images/scaled/${filename_noext}_${size}.jpeg"
-    scaled_webp="assets/images/scaled/${filename_noext}_${size}.webp"
+  for file in assets/images/original/*.jpeg; do
+    filename=$(basename -- "$file")
+    filename_noext="${filename%.*}"
 
-    sips -Z $size "$file" --out "$scaled_jpeg"
-    cwebp -q 80 "$scaled_jpeg" -o "$scaled_webp"
+    for size in "${sizes[@]}"; do
+      scaled_jpeg="assets/images/scaled/${filename_noext}_${size}.jpeg"
+      scaled_webp="assets/images/scaled/${filename_noext}_${size}.webp"
+
+      resize $size "$file" "$scaled_jpeg"
+      cwebp -q 80 "$scaled_jpeg" -o "$scaled_webp"
+    done
   done
-done
+}
+
+resize() {
+    local size="$1"
+    local in="$2"
+    local out="$3"
+
+    # Check if sips is available
+    if command -v sips &> /dev/null; then
+        sips -Z "$size" "$in" --out "$out"
+    elif command -v convert &> /dev/null; then
+        convert "$in" -resize "$size" "$out"
+    else
+        echo "Error: Neither sips nor convert (ImageMagick) found." >&2
+        return 1
+    fi
+}
+
+main
