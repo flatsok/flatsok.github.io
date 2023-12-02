@@ -6,17 +6,14 @@ layout: base
   <div>
     <h1>{{ page.title }}</h1>
 
-    <div id="buttons">
-      <button onclick="showSlideshow()">slideshow</button>
-      <button onclick="showMap()">map</button>
-    </div>
-    <div style="height: 20px"></div>
+    <a class="iconLink" href="{{ page.photos }}" target="_blank" rel="noopener noreferrer">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/1/12/Google_Photos_icon_%282020%29.svg"></img>
+    </a>
+    <a class="iconLink" href="{{ page.map }}" target="_blank" rel="noopener noreferrer">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg"></img>
+    </a>
 
-    <div id="slideshow" style="display: block;">
-      {{ content }}
-    </div>
-
-    <div id="map" style="display: none;">
+    <div id="map">
       <iframe
         id="mapFrame"
         src="{{ page.map }}"
@@ -31,54 +28,25 @@ layout: base
   </div>
 </main>
 
-<script>
-  var slideshow = document.getElementById('slideshow');
-  var map = document.getElementById('map');
-
-  function showSlideshow() {
-    map.style.display = 'none';
-    slideshow.style.display = 'block';
-  };
-
-  function showMap() {
-    map.style.display = 'block';
-    slideshow.style.display = 'none';
-  };
-</script>
-
 <style>
+  h1 {
+    margin-bottom: 0;
+  }
+
   main {
     text-align: center;
   }
 
   img {
     max-width: 100%;
+    max-height: 100%;
   }
 
-  button {
-    font-size: 18px;
-    cursor: pointer;
-    width: 100%;
-    background-color: white;
-    border: none;
-    padding: 6px 0;
-  }
-
-  .box {
-    width: 100%;
-  }
-
-
-  #buttons {
-    max-width: 400px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-
-    button {
-      flex: 1;
-      text-align: center;
-    }
+  .iconLink {
+    padding: 15px;
+    display: inline-block;
+    height: 35px;
+    width: 35px;
   }
 
 </style>
