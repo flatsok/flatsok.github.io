@@ -2,40 +2,72 @@
 layout: base
 ---
 
-{% assign diary = site.diary | sort: 'title' | reverse %}
-
 <main>
-  <h1>Adventures of Flat Sok 🐈‍⬛</h1>
+  <h1>adventures of flat sok</h1>
 
-  {% for entry in diary %}
-    <hr>
-    <a class="entry"
-      href="{{ entry.url }}"
-      >
-      <img class="detail"
-        src="/assets/images/scaled/{{ entry.image }}_200.webp"
-        width="100px"
-        >
-      <h2 class="detail">
-        {{ entry.title }}
-      </h2>
-    </a>
-  {% endfor %}
-  <hr>
+  <div style="height: 20px;"></div>
+  <img id="intro" src="/assets/images/scaled/sok_800.webp">
+  <div style="height: 20px;"></div>
+
+  <div>
+    flat sok and <a
+    href="https://instagram.com/madame.sok">Real Sok</a>
+  </div>
+
+  <span>check out my adventures on</span>
+
+  <a class="iconLink" href="https://photos.app.goo.gl/JjJMtzdMTjKf7fBNA" target="_blank" rel="noopener noreferrer">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/1/12/Google_Photos_icon_%282020%29.svg"></img>
+  </a>
+  <span>or</span>
+  <a class="iconLink" href="https://www.google.com/maps/d/embed?mid=1KuiSw08X0MHaeq2c15PtsyjxuxnxZMM&noprof=1" target="_blank" rel="noopener noreferrer">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg"></img>
+  </a>
+
+  <div style="height: 10px;"></div>
+
+  <div id="map">
+    <iframe
+      id="mapFrame"
+      src="https://www.google.com/maps/d/embed?mid=1KuiSw08X0MHaeq2c15PtsyjxuxnxZMM&noprof=1"
+      width="100%"
+      height="480"
+      style="border:0;"
+      allowfullscreen=""
+      loading="lazy"
+      ></iframe>
+  </div>
+
+  <div style="height: 50px;"></div>
+
 </main>
 
 <style>
-  main {
+
+  body {
     text-align: center;
   }
 
-  .entry {
+  img#intro {
+    width: 100%;
+    max-width: 500px;
     display: block;
-    margin: 10px 0;
+    margin: 0 auto;
   }
 
-  .detail {
-    display: inline-block;
+  .iconLink {
+    padding: 7px;
     vertical-align: middle;
+    margin-bottom: 13px;
+    display: inline-block;
+    height: 35px;
+    width: 35px;
   }
+  
+  .iconLink > img {
+    width: 100%;
+    height: 100%;
+  }
+
+
 </style>
